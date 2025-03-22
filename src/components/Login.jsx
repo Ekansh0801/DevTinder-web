@@ -10,6 +10,7 @@ const Login = () => {
   const [password,setPassword] = useState("Swati_0108");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [error,setError] = useState("");
 
   const handleLogin = async(e) => {
     try{
@@ -25,6 +26,7 @@ const Login = () => {
     } 
     catch(err){
       console.log(err);
+      setError(err.response.data.error || "something went wrong!!");
     }     
   }
   return (
@@ -45,7 +47,7 @@ const Login = () => {
       </fieldset>
 
     </div>
-
+    <p className='text-red-500'>{error}</p>
     <div className="card-actions justify-center">
       <button className="btn btn-primary" onClick={(e) => (handleLogin(e))}>LOGIN</button>
     </div>
