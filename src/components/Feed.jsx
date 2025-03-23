@@ -11,7 +11,7 @@ const Feed = () => {
 
 
     const getFeed = async() => {
-        if(feed) return;
+        if(feed.length > 0) return;
         try{
             const res = await axios.get(BASE_URL + "/user/feed",{withCredentials:true});
             // console.log(res.data.data);
@@ -27,7 +27,7 @@ const Feed = () => {
     },[])
 
     if(feed.length == 0){
-        return <h1>No Users found!!!</h1>
+        return <h1>No New Users found!!!</h1>
     }
   return (
     feed && (
